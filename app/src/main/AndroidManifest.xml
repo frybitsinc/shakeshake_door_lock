@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.blogspot.frybitsinc.shakeshack_unlock">
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.USE_FINGERPRINT" />
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -22,6 +23,7 @@
             android:windowSoftInputMode="stateAlwaysVisible" />
         <activity android:name=".UnlockPinActivity"/>
         <activity android:name=".UnlockConnectActivity"/>
+        <activity android:name=".SettingsFingerprintActivity"/>
     </application>
 
 </manifest>

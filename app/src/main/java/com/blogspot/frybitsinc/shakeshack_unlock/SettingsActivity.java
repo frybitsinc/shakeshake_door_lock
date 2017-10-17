@@ -46,13 +46,13 @@ public class SettingsActivity extends Activity {
 //                startActivity(intent);
 //            }
 //        });
-//        mButtonFingerprint.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent = new Intent(getApplicationContext(), SettingsFingerprintActivity.class);
-//                startActivity(intent);
-//            }
-//        });
+        mButtonFingerprint.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), SettingsFingerprintActivity.class);
+                startActivity(intent);
+            }
+        });
 //        mButtonGesture.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View v) {
