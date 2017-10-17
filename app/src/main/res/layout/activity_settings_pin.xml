@@ -23,7 +23,7 @@
             android:inputType="numberPassword"
             android:ems="10"
             android:maxLength="4"
-            android:id="@+id/editText"
+            android:id="@+id/editText_pin"
             android:layout_weight="4"
             android:gravity="center">
         </EditText>
