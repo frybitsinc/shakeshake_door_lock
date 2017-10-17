@@ -21,7 +21,12 @@ public class SettingsActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
-
+        //current lock mode
+        SharedPreference.init(this);
+        String currentUnlockMode = SharedPreference.getString(SharedPreference.UNLOCK_MODE);
+        mTextviewCurrentLock = (TextView) findViewById(R.id.text_current_lock);
+        mTextviewCurrentLock.setText(currentUnlockMode);
+        //button
         mButtonPin = (Button) findViewById(R.id.button_pin);
         mButtonPattern = (Button) findViewById(R.id.button_pattern);
         mButtonFingerprint = (Button) findViewById(R.id.button_fingerprint);

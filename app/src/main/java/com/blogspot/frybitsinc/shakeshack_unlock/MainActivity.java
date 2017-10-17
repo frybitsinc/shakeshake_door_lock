@@ -29,8 +29,12 @@ public class MainActivity extends Activity {
         mButtonUnlock.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), UnlockActivity.class);
+                //test
+                Intent intent = new Intent(getApplicationContext(), UnlockConnectActivity.class);
                 startActivity(intent);
+//                Intent intent = new Intent(getApplicationContext(), UnlockPinActivity.class);
+//                startActivity(intent);
+                //later
             }
         });
         mButtonLock.setOnClickListener(new View.OnClickListener() {

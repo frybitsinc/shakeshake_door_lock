@@ -1,7 +1,6 @@
 package com.blogspot.frybitsinc.shakeshack_unlock;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -28,8 +27,6 @@ public class SettingsPinActivity extends Activity {
         mButtonConfirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                Intent intent = new Intent(getApplicationContext(), SettingsPinActivity.class);
-//                startActivity(intent);
                 editText = (EditText)findViewById(R.id.editText_pin);
                 String pin_input = editText.getText().toString();
 //                Toast.makeText(getApplicationContext(), pin_input, LENGTH_LONG).show();
@@ -42,6 +39,7 @@ public class SettingsPinActivity extends Activity {
                 else{
                     //잠금 핀 설정
                     SharedPreference.setString(SharedPreference.UNLOCK_MODE, SharedPreference.PIN);
+                    SharedPreference.setString(SharedPreference.PIN, pin_input);
                     //print
 //                    Toast.makeText(getApplicationContext(), SharedPreference.getString(UNLOCK_MODE), LENGTH_LONG).show();
                     String currentUnlockMode = SharedPreference.getString(SharedPreference.UNLOCK_MODE);
@@ -51,11 +49,17 @@ public class SettingsPinActivity extends Activity {
                     else{
                         Log.d("UNLOCK_MODE", currentUnlockMode);
                     }
+                    String currentPin = SharedPreference.getString(SharedPreference.PIN);
+                    if(currentUnlockMode==null){
+                        Log.d("UNLOCK_PIN",  "null");
+                    }
+                    else{
+                        Log.d("UNLOCK_PIN", currentPin);
+                    }
                     //확인 toast
                     Toast.makeText(getApplicationContext(), "PIN setting done !", LENGTH_LONG).show();
-                    //메인 ㄱㄱ
-                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                    startActivity(intent);
+                    //뒤로
+                    finish();
                 }
             }
         });

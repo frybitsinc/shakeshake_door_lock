@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.blogspot.frybitsinc.shakeshack_unlock">
-
+    <uses-permission android:name="android.permission.INTERNET" />
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -20,6 +20,8 @@
         <activity android:name=".SettingsActivity"/>
         <activity android:name=".SettingsPinActivity"
             android:windowSoftInputMode="stateAlwaysVisible" />
+        <activity android:name=".UnlockPinActivity"/>
+        <activity android:name=".UnlockConnectActivity"/>
     </application>
 
 </manifest>
