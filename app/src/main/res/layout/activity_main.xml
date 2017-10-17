@@ -19,7 +19,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="120dp"
+            android:layout_marginTop="90dp"
             android:textSize="35sp"
             android:textStyle="bold"
             android:textColor="#000000"
@@ -27,15 +27,23 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="7dp"
             android:textSize="30sp"
             android:textStyle="bold"
             android:textColor="#000000"
-            android:text="SHAKESHAKE OPEN!" />
+            android:text="SHAKESHAKE" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            android:textColor="#000000"
+            android:text="DOORLOCK!" />
         <Button
             android:id="@+id/button_settings"
             android:layout_width="200dp"
             android:layout_height="70dp"
-            android:layout_marginTop="70dp"
+            android:layout_marginTop="50dp"
             android:text="SETTINGS"
             android:textSize="25sp"
             android:textStyle="bold"
