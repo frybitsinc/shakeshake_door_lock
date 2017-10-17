@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Shakeshack_unlock.iml" filepath="$PROJECT_DIR$/Shakeshack_unlock.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/materiallockview/materiallockview.iml" filepath="$PROJECT_DIR$/materiallockview/materiallockview.iml" />
       <module fileurl="file://$PROJECT_DIR$/shakeshake_door_lock.iml" filepath="$PROJECT_DIR$/shakeshake_door_lock.iml" />
     </modules>
   </component>
