@@ -18,6 +18,7 @@
         <activity android:name=".UnlockActivity"/>
         <activity android:name=".LockActivity"/>
         <activity android:name=".SettingsActivity"/>
+        <activity android:name=".SettingsPinActivity"/>
     </application>
 
 </manifest>
