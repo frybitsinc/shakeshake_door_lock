@@ -25,7 +25,8 @@
             android:maxLength="4"
             android:id="@+id/editText"
             android:layout_weight="4"
-            android:gravity="center"/>
+            android:gravity="center">
+        </EditText>
     </LinearLayout>
     <Button
         android:id="@+id/button_confirm"
