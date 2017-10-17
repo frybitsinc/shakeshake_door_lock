@@ -16,7 +16,7 @@ public class SharedPreference {
     public static final String PATTERN = "pattern";
     public static final String FINGERPRINT = "fingerprint";
     public static final String GESTURE = "gesture";
-    public static final Boolean LOCK_STATE = null;
+    public static final String DOORLOCK_UNLOCK = "doorlock_unlock";
 
     public static void init(Context context) {
         mSharedPreference = context.getSharedPreferences(SP_NAME, Context.MODE_PRIVATE);

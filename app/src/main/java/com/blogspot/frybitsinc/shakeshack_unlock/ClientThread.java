@@ -39,7 +39,7 @@ public class ClientThread  extends Thread {
         System.out.println("send");
         try {
             System.out.println("data:"+data);
-            bufferW.write(data+"\n");
+            bufferW.write(data);
             bufferW.flush();
         } catch (IOException e) {
             // TODO Auto-generated catch block

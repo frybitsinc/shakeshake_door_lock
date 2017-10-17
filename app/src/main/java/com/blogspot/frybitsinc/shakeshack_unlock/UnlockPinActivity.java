@@ -38,9 +38,13 @@ public class UnlockPinActivity extends Activity {
                     //4자리맞음
                     //잠금 핀 확인
                     if(pin_input.equals(SharedPreference.getString(SharedPreference.PIN))){
+                        //correct
                         Toast.makeText(getApplicationContext(), "PIN is correct", LENGTH_LONG).show();
+                        SharedPreference.setBoolean(SharedPreference.DOORLOCK_UNLOCK, true);
+                        finish();
                     }
                     else{
+                        //wrong
                         Toast.makeText(getApplicationContext(), "PIN is wrong....check again please!", LENGTH_LONG).show();
                     }
                 }
