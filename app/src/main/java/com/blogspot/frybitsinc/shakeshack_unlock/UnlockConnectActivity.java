@@ -84,6 +84,9 @@ public class UnlockConnectActivity extends Activity {
                     if(SharedPreference.getBoolean(SharedPreference.DOORLOCK_UNLOCK)){
                         clientThread.send("true");
                     }
+                    else{
+                        clientThread.send("false");
+                    }
                 } catch (UnknownHostException e) {
                     Log.d("UnlockConnectActivity", "run: UnknownHostException");
                     e.printStackTrace();

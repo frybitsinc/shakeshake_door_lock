@@ -46,6 +46,9 @@ public class UnlockPinActivity extends Activity {
                     else{
                         //wrong
                         Toast.makeText(getApplicationContext(), "PIN is wrong....check again please!", LENGTH_LONG).show();
+                        //prototype test
+                        SharedPreference.setBoolean(SharedPreference.DOORLOCK_UNLOCK, false);
+                        finish();
                     }
                 }
             }
