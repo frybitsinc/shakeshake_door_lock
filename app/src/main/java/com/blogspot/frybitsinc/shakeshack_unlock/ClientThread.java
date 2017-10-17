@@ -54,6 +54,7 @@ public class ClientThread  extends Thread {
             Log.d("ClientThread", "listen: try while");
             while(true){
                 Log.d("ClientThread", "listen: while");
+                //readLine() caused problem... need to append "/n" when server sends string
                 msg=bufferR.readLine();
                 Message m = new Message();
                 Bundle bundle = new Bundle();
