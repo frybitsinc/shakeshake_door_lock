@@ -5,12 +5,14 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 /**
  * Created by spong on 2017-10-17.
  */
 
 public class SettingsActivity extends Activity {
+    private TextView mTextviewCurrentLock;
     private Button mButtonPin;
     private Button mButtonPattern;
     private Button mButtonFingerprint;
@@ -19,6 +21,7 @@ public class SettingsActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
+
         mButtonPin = (Button) findViewById(R.id.button_pin);
         mButtonPattern = (Button) findViewById(R.id.button_pattern);
         mButtonFingerprint = (Button) findViewById(R.id.button_fingerprint);

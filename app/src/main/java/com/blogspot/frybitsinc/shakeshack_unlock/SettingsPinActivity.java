@@ -1,7 +1,9 @@
 package com.blogspot.frybitsinc.shakeshack_unlock;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -21,6 +23,7 @@ public class SettingsPinActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings_pin);
+        SharedPreference.init(this);
         mButtonConfirm = (Button) findViewById(R.id.button_confirm);
         mButtonConfirm.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -29,7 +32,7 @@ public class SettingsPinActivity extends Activity {
 //                startActivity(intent);
                 editText = (EditText)findViewById(R.id.editText_pin);
                 String pin_input = editText.getText().toString();
-                Toast.makeText(getApplicationContext(), pin_input, LENGTH_LONG).show();
+//                Toast.makeText(getApplicationContext(), pin_input, LENGTH_LONG).show();
                 //4자리수체크
                 if(pin_input.length()!=4){
                     //4자리아님
@@ -37,10 +40,22 @@ public class SettingsPinActivity extends Activity {
                     //edittext 초기화 >다시입력focus
                 }
                 else{
-                    Toast.makeText(getApplicationContext(), "PIN setting done !", LENGTH_LONG).show();
                     //잠금 핀 설정
-                    //toast
+                    SharedPreference.setString(SharedPreference.UNLOCK_MODE, SharedPreference.PIN);
+                    //print
+//                    Toast.makeText(getApplicationContext(), SharedPreference.getString(UNLOCK_MODE), LENGTH_LONG).show();
+                    String currentUnlockMode = SharedPreference.getString(SharedPreference.UNLOCK_MODE);
+                    if(currentUnlockMode==null){
+                        Log.d("UNLOCK_MODE",  "null");
+                    }
+                    else{
+                        Log.d("UNLOCK_MODE", currentUnlockMode);
+                    }
+                    //확인 toast
+                    Toast.makeText(getApplicationContext(), "PIN setting done !", LENGTH_LONG).show();
                     //메인 ㄱㄱ
+                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                    startActivity(intent);
                 }
             }
         });

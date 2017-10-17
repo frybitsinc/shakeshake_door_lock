@@ -8,7 +8,7 @@ import android.content.SharedPreferences;
  */
 
 public class SharedPreference {
-    private static final String SP_NAME = "ohao";
+    private static final String SP_NAME = "shakeshake";
     private static SharedPreferences mSharedPreference = null;
 
     public static final String UNLOCK_MODE = "unlock_mode";
@@ -21,7 +21,7 @@ public class SharedPreference {
     public static void init(Context context) {
         mSharedPreference = context.getSharedPreferences(SP_NAME, Context.MODE_PRIVATE);
     }
-    
+
     public static void setBoolean(String key, boolean value) {
         if(key == null) {
             return;
