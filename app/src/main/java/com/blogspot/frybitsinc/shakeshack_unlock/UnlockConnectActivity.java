@@ -39,10 +39,12 @@ public class UnlockConnectActivity extends Activity {
         textView = (TextView) findViewById(R.id.textView);
         editText = (EditText) findViewById(R.id.editText);
         btn_send = (Button) findViewById(R.id.btn_send);
+//        btn_recv = (Button) findViewById(R.id.btn_recv);
         handler = new Handler(){
             public void handleMessage(Message msg) {
                 super.handleMessage(msg);
                 Bundle bundle = msg.getData();
+                Log.d("UnlockConnectActivity", "handleMessage: "+bundle.getString("msg"));
                 textView.append(bundle.getString("msg")+"\n");
             }
         };

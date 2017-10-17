@@ -3,6 +3,7 @@ package com.blogspot.frybitsinc.shakeshack_unlock;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.util.Log;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -46,11 +47,13 @@ public class ClientThread  extends Thread {
         }
     }
 
-    //recv
+    //listen
     public String listen(){
         String msg=null;
         try {
+            Log.d("ClientThread", "listen: try while");
             while(true){
+                Log.d("ClientThread", "listen: while");
                 msg=bufferR.readLine();
                 Message m = new Message();
                 Bundle bundle = new Bundle();
