@@ -53,12 +53,12 @@ public class SettingsActivity extends Activity {
                 startActivity(intent);
             }
         });
-//        mButtonGesture.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent = new Intent(getApplicationContext(), SettingsGestureActivity.class);
-//                startActivity(intent);
-//            }
-//        });
+        mButtonGesture.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), UnlockActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 }
