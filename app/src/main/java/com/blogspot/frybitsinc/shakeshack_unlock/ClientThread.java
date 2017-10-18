@@ -68,6 +68,13 @@ public class ClientThread  extends Thread {
         }
         return msg;
     }
+    public void close() {
+        try {
+            client.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
     public void run() {
         super.run();
         listen();

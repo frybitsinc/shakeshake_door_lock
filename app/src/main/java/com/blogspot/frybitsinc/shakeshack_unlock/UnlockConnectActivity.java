@@ -31,8 +31,8 @@ public class UnlockConnectActivity extends Activity {
     private String ip = "192.168.123.104";
     private int port = 50100;
     private Thread thread;
-    ClientThread clientThread;
-    Handler handler;
+    private ClientThread clientThread;
+    private Handler handler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,13 +80,6 @@ public class UnlockConnectActivity extends Activity {
                     // PIN test
                     Intent it = new Intent(getApplicationContext(), UnlockPinActivity.class);
                     startActivity(it);
-                    Log.d("UnlockConnectActivity", String.valueOf(SharedPreference.getBoolean(SharedPreference.DOORLOCK_UNLOCK)));
-                    if(SharedPreference.getBoolean(SharedPreference.DOORLOCK_UNLOCK)){
-                        clientThread.send("true");
-                    }
-                    else{
-                        clientThread.send("false");
-                    }
                 } catch (UnknownHostException e) {
                     Log.d("UnlockConnectActivity", "run: UnknownHostException");
                     e.printStackTrace();
@@ -98,5 +91,20 @@ public class UnlockConnectActivity extends Activity {
             }
         };
         thread.start();
+    }
+
+    @Override
+    protected void onResume(){
+        super.onResume();
+        if (clientThread != null) {
+            Log.d("UnlockConnectActivity", String.valueOf(SharedPreference.getBoolean(SharedPreference.DOORLOCK_UNLOCK)));
+            if (SharedPreference.getBoolean(SharedPreference.DOORLOCK_UNLOCK)) {
+                clientThread.send("true");
+                clientThread.close();
+            } else {
+                clientThread.send("false");
+                clientThread.close();
+            }
+        }
     }
 }
