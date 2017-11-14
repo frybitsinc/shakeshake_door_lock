@@ -25,6 +25,7 @@
         <activity android:name=".UnlockConnectActivity"/>
         <activity android:name=".SettingsFingerprintActivity"/>
         <activity android:name=".SettingsPatternActivity"/>
+        <activity android:name=".SettingsGestureActivity"/>
     </application>
 
 </manifest>
