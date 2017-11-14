@@ -62,4 +62,11 @@ public class SettingsActivity extends Activity {
             }
         });
     }
+    @Override
+    protected void onResume() {
+        super.onResume();
+        //current lock mode REFRESH!
+        SharedPreference.init(this);
+        String currentUnlockMode = SharedPreference.getString(SharedPreference.UNLOCK_MODE);
+    }
 }

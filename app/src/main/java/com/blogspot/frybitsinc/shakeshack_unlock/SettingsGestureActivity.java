@@ -12,9 +12,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.NumberPicker;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+
+import static android.widget.Toast.LENGTH_LONG;
 
 /**
  * Created by spong on 2017-11-14.
@@ -168,6 +171,10 @@ public class SettingsGestureActivity extends AppCompatActivity {
                 else{
                     Log.d("UNLOCK_GESTURE", currentPin);
                 }
+                //확인 toast
+                Toast.makeText(getApplicationContext(), "GESTURE setting done !", LENGTH_LONG).show();
+                //뒤로
+                finish();
             }
         });
     }
