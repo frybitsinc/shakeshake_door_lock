@@ -17,7 +17,7 @@ import android.widget.TextView;
 public class SettingsGestureActivity extends AppCompatActivity {
 
     /*Wizets*/
-    private TextView tv_roll, tv_pitch;
+    private TextView tv_roll, tv_pitch, tv_yaw;
 
     /*Used for Accelometer & Gyroscoper*/
     private SensorManager mSensorManager = null;
@@ -28,12 +28,12 @@ public class SettingsGestureActivity extends AppCompatActivity {
     /*Sensor variables*/
     private float[] mGyroValues = new float[3];
     private float[] mAccValues = new float[3];
-    private double mAccRoll, mAccPitch;
+    private double mAccRoll, mAccPitch, mAccYaw;
 
     /*for unsing complementary fliter*/
     private float a = 0.2f;
     private static final float NS2S = 1.0f/1000000000.0f;
-    private double pitch = 0, roll = 0;
+    private double pitch = 0, roll = 0, yaw = 0;
     private double timestamp;
     private double dt;
     private double temp;
@@ -48,6 +48,7 @@ public class SettingsGestureActivity extends AppCompatActivity {
 
         tv_roll = (TextView)findViewById(R.id.tv_roll);
         tv_pitch = (TextView)findViewById(R.id.tv_pitch);
+        tv_yaw = (TextView)findViewById(R.id.tv_yaw);
 
         mSensorManager = (SensorManager)getSystemService(Context.SENSOR_SERVICE);
         userSensorListner = new UserSensorListner();
@@ -95,6 +96,7 @@ public class SettingsGestureActivity extends AppCompatActivity {
         /* degree measure for accelerometer */
         mAccRoll = Math.atan2(mAccValues[1], mAccValues[2]) * 180.0 / Math.PI;       // X 축 기준
         mAccPitch = -Math.atan2(mAccValues[0], mAccValues[2]) * 180.0 / Math.PI;    // Y 축 기준
+        mAccYaw = Math.atan2(mAccValues[0], mAccValues[1]) * 180.0 / Math.PI;       // Z 축 기준
 
         /**
          * 1st complementary filter.
@@ -107,8 +109,12 @@ public class SettingsGestureActivity extends AppCompatActivity {
         temp = (1/a) * (mAccPitch - pitch) + mGyroValues[1];
         pitch = pitch + (temp*dt);
 
+        temp = (1/a) * (mAccYaw - yaw) + mGyroValues[2];
+        yaw = yaw + (temp*dt);
+
         tv_roll.setText("roll : "+roll);
         tv_pitch.setText("pitch : "+pitch);
+        tv_yaw.setText("yaw : "+yaw);
     }
 
     public class UserSensorListner implements SensorEventListener {
