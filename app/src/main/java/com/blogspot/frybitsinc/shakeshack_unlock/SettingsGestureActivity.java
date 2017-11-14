@@ -46,8 +46,8 @@ public class SettingsGestureActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings_gesture);
 
-        tv_roll = (TextView)findViewById(R.id.tv_roll);
         tv_pitch = (TextView)findViewById(R.id.tv_pitch);
+        tv_roll = (TextView)findViewById(R.id.tv_roll);
         tv_yaw = (TextView)findViewById(R.id.tv_yaw);
 
         mSensorManager = (SensorManager)getSystemService(Context.SENSOR_SERVICE);
@@ -94,8 +94,8 @@ public class SettingsGestureActivity extends AppCompatActivity {
         timestamp = new_ts;
 
         /* degree measure for accelerometer */
-        mAccRoll = Math.atan2(mAccValues[1], mAccValues[2]) * 180.0 / Math.PI;       // X 축 기준
-        mAccPitch = -Math.atan2(mAccValues[0], mAccValues[2]) * 180.0 / Math.PI;    // Y 축 기준
+        mAccPitch = Math.atan2(mAccValues[1], mAccValues[2]) * 180.0 / Math.PI;     // X 축 기준
+        mAccRoll = -Math.atan2(mAccValues[0], mAccValues[2]) * 180.0 / Math.PI;     // Y 축 기준
         mAccYaw = Math.atan2(mAccValues[0], mAccValues[1]) * 180.0 / Math.PI;       // Z 축 기준
 
         /**
@@ -103,17 +103,17 @@ public class SettingsGestureActivity extends AppCompatActivity {
          *  mGyroValuess : 각속도 성분.
          *  mAccPitch : 가속도계를 통해 얻어낸 회전각.
          */
-        temp = (1/a) * (mAccRoll - roll) + mGyroValues[0];
-        roll = roll + (temp*dt);
-
         temp = (1/a) * (mAccPitch - pitch) + mGyroValues[1];
         pitch = pitch + (temp*dt);
+
+        temp = (1/a) * (mAccRoll - roll) + mGyroValues[0];
+        roll = roll + (temp*dt);
 
         temp = (1/a) * (mAccYaw - yaw) + mGyroValues[2];
         yaw = yaw + (temp*dt);
 
-        tv_roll.setText("roll : "+roll);
         tv_pitch.setText("pitch : "+pitch);
+        tv_roll.setText("roll : "+roll);
         tv_yaw.setText("yaw : "+yaw);
     }
 

@@ -10,35 +10,35 @@
     android:gravity="center">
 
     <TextView
-        android:id="@+id/tv_roll"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="20dp"
-        android:text="roll" />
-    <TextView
         android:id="@+id/tv_pitch"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="20dp"
-        android:text="pitch"
-        android:layout_below="@+id/tv_roll"
-        android:layout_alignStart="@+id/tv_roll" />
+        android:text="pitch" />
+    <TextView
+        android:id="@+id/tv_roll"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20dp"
+        android:text="roll"
+        android:layout_below="@+id/tv_pitch"
+        android:layout_alignStart="@+id/tv_pitch" />
     <TextView
         android:id="@+id/tv_yaw"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="20dp"
         android:text="yaw"
-        android:layout_below="@+id/tv_pitch"
-        android:layout_alignStart="@+id/tv_pitch" />
+        android:layout_below="@+id/tv_roll"
+        android:layout_alignStart="@+id/tv_roll" />
 
     <Button
         android:id="@+id/filter"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="filter"
-        android:layout_above="@+id/tv_roll"
-        android:layout_alignStart="@+id/tv_roll"
+        android:layout_above="@+id/tv_pitch"
+        android:layout_alignStart="@+id/tv_pitch"
         android:layout_marginBottom="16dp" />
 
 </RelativeLayout>
