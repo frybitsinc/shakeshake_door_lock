@@ -33,12 +33,15 @@ public class UnlockConnectActivity extends Activity {
     private Thread thread;
     private ClientThread clientThread;
     private Handler handler;
+    private String currentUnlockMode;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_unlock_connect);
         SharedPreference.init(this);
+        //current lock mode
+        currentUnlockMode = SharedPreference.getString(SharedPreference.UNLOCK_MODE);
         btn = (Button) findViewById(R.id.btn);
         textView = (TextView) findViewById(R.id.textView);
         editText = (EditText) findViewById(R.id.editText);
@@ -77,9 +80,28 @@ public class UnlockConnectActivity extends Activity {
                     clientThread.start();
                     Log.d("UnlockConnectActivity", "run: Server connected");
 //                    Toast.makeText(getApplicationContext(), "Server connected. ", LENGTH_LONG).show();
-                    // PIN test
-                    Intent it = new Intent(getApplicationContext(), UnlockPinActivity.class);
-                    startActivity(it);
+                    // get current unlock mode
+                    // and start activity
+                    if(currentUnlockMode.equals("pin")){
+                        // PIN unlock
+                        Intent it = new Intent(getApplicationContext(), UnlockPinActivity.class);
+                        startActivity(it);
+                    }
+                    else if(currentUnlockMode.equals("pattern")){
+                        // PATTERN
+//                        Intent it = new Intent(getApplicationContext(), UnlockPatternActivity.class);
+//                        startActivity(it);
+                    }
+                    else if(currentUnlockMode.equals("fingerprint")){
+                        // FINGERPRINT
+//                        Intent it = new Intent(getApplicationContext(), UnlockFingerprintActivity.class);
+//                        startActivity(it);
+                    }
+                    else if(currentUnlockMode.equals("gesture")){
+                        // GESTURE
+//                        Intent it = new Intent(getApplicationContext(), UnlockGestureActivity.class);
+//                        startActivity(it);
+                    }
                 } catch (UnknownHostException e) {
                     Log.d("UnlockConnectActivity", "run: UnknownHostException");
                     e.printStackTrace();
