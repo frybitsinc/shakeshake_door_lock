@@ -152,7 +152,7 @@ public class SettingsGestureActivity extends AppCompatActivity {
             public void onClick(View v) {
                 //set password
                 gesture_input = String.valueOf(num_pitch.getValue()) + String.valueOf(num_roll.getValue()) + String.valueOf(num_yaw.getValue());
-                //잠금 핀 설정
+                //잠금 제스쳐 설정
                 SharedPreference.setString(SharedPreference.UNLOCK_MODE, SharedPreference.GESTURE);
                 SharedPreference.setString(SharedPreference.GESTURE, gesture_input);
                 //print
@@ -164,12 +164,12 @@ public class SettingsGestureActivity extends AppCompatActivity {
                 else{
                     Log.d("UNLOCK_MODE", currentUnlockMode);
                 }
-                String currentPin = SharedPreference.getString(SharedPreference.GESTURE);
+                String current_gesture = SharedPreference.getString(SharedPreference.GESTURE);
                 if(currentUnlockMode==null){
                     Log.d("UNLOCK_GESTURE",  "null");
                 }
                 else{
-                    Log.d("UNLOCK_GESTURE", currentPin);
+                    Log.d("UNLOCK_GESTURE", current_gesture);
                 }
                 //확인 toast
                 Toast.makeText(getApplicationContext(), "GESTURE setting done !", LENGTH_LONG).show();
