@@ -68,5 +68,7 @@ public class SettingsActivity extends Activity {
         //current lock mode REFRESH!
         SharedPreference.init(this);
         String currentUnlockMode = SharedPreference.getString(SharedPreference.UNLOCK_MODE);
+        mTextviewCurrentLock = (TextView) findViewById(R.id.text_current_lock);
+        mTextviewCurrentLock.setText(currentUnlockMode);
     }
 }
