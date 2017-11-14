@@ -8,6 +8,8 @@ import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.Button;
+import android.widget.NumberPicker;
 import android.widget.TextView;
 
 /**
@@ -18,6 +20,8 @@ public class SettingsGestureActivity extends AppCompatActivity {
 
     /*Wizets*/
     private TextView tv_roll, tv_pitch, tv_yaw;
+    private Button btn_on_off;
+    private NumberPicker num_pitch, num_roll, num_yaw;
 
     /*Used for Accelometer & Gyroscoper*/
     private SensorManager mSensorManager = null;
@@ -46,30 +50,43 @@ public class SettingsGestureActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings_gesture);
 
-        tv_pitch = (TextView)findViewById(R.id.tv_pitch);
-        tv_roll = (TextView)findViewById(R.id.tv_roll);
-        tv_yaw = (TextView)findViewById(R.id.tv_yaw);
+        tv_pitch = (TextView) findViewById(R.id.tv_pitch);
+        tv_roll = (TextView) findViewById(R.id.tv_roll);
+        tv_yaw = (TextView) findViewById(R.id.tv_yaw);
+
+        btn_on_off = (Button) findViewById(R.id.filter);
+
+        num_pitch = (NumberPicker) findViewById(R.id.numberPicker_pitch);
+        num_roll = (NumberPicker) findViewById(R.id.numberPicker_roll);
+        num_yaw = (NumberPicker) findViewById(R.id.numberPicker_yaw);
+        num_pitch.setMinValue(0);
+        num_pitch.setMaxValue(9);
+        num_roll.setMinValue(0);
+        num_roll.setMaxValue(9);
+        num_yaw.setMinValue(0);
+        num_yaw.setMaxValue(9);
 
         mSensorManager = (SensorManager)getSystemService(Context.SENSOR_SERVICE);
         userSensorListner = new UserSensorListner();
         mGyroscopeSensor = mSensorManager.getDefaultSensor(Sensor.TYPE_GYROSCOPE);
         mAccelerometer= mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
 
-        findViewById(R.id.filter).setOnClickListener(new View.OnClickListener() {
+        btn_on_off.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 /* 실행 중이지 않을 때 -> 실행 */
                 if(!running){
                     running = true;
+                    btn_on_off.setText("SENSOR OFF");
                     mSensorManager.registerListener(userSensorListner, mGyroscopeSensor, SensorManager.SENSOR_DELAY_UI);
                     mSensorManager.registerListener(userSensorListner, mAccelerometer, SensorManager.SENSOR_DELAY_UI);
                 }
 
                 /* 실행 중일 때 -> 중지 */
-                else if(running)
-                {
+                else if(running) {
                     running = false;
+                    btn_on_off.setText("SENSOR ON");
                     mSensorManager.unregisterListener(userSensorListner);
 
                 }
@@ -112,9 +129,9 @@ public class SettingsGestureActivity extends AppCompatActivity {
         temp = (1/a) * (mAccYaw - yaw) + mGyroValues[2];
         yaw = yaw + (temp*dt);
 
-        tv_pitch.setText("pitch : "+pitch);
-        tv_roll.setText("roll : "+roll);
-        tv_yaw.setText("yaw : "+yaw);
+        tv_pitch.setText("pitch : " + Double.parseDouble(String.format("%.2f",pitch)));
+        tv_roll.setText("roll : " + Double.parseDouble(String.format("%.2f",roll)));
+        tv_yaw.setText("yaw : " + Double.parseDouble(String.format("%.2f",yaw)));
     }
 
     public class UserSensorListner implements SensorEventListener {

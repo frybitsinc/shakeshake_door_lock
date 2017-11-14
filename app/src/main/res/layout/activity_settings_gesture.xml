@@ -1,18 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/activity_main"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    android:gravity="center">
+    android:layout_height="match_parent">
 
+    <ImageView
+        android:id="@+id/img_roll_pitch_yaw"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_gravity="center_horizontal"
+        android:src="@drawable/img_roll_pitch_yaw"/>
     <TextView
         android:id="@+id/tv_pitch"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="100dp"
         android:textSize="20dp"
         android:text="pitch" />
     <TextView
@@ -21,24 +25,38 @@
         android:layout_height="wrap_content"
         android:textSize="20dp"
         android:text="roll"
-        android:layout_below="@+id/tv_pitch"
-        android:layout_alignStart="@+id/tv_pitch" />
+        android:layout_marginLeft="100dp"/>
     <TextView
         android:id="@+id/tv_yaw"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="20dp"
         android:text="yaw"
-        android:layout_below="@+id/tv_roll"
-        android:layout_alignStart="@+id/tv_roll" />
-
+        android:layout_marginLeft="100dp"/>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:layout_marginTop="20dp" >
+        <NumberPicker
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:id="@+id/numberPicker_pitch" />
+        <NumberPicker
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:id="@+id/numberPicker_roll"/>
+        <NumberPicker
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:id="@+id/numberPicker_yaw"/>
+    </LinearLayout>
     <Button
         android:id="@+id/filter"
-        android:layout_width="wrap_content"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:text="filter"
-        android:layout_above="@+id/tv_pitch"
-        android:layout_alignStart="@+id/tv_pitch"
-        android:layout_marginBottom="16dp" />
-
-</RelativeLayout>
+        android:layout_gravity="center_horizontal"
+        android:text="SENSOR ON"
+        android:layout_marginTop="20dp" />
+</LinearLayout>
